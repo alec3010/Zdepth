@@ -36,7 +36,7 @@ endif()
 ################################################################################
 # Subprojects
 
-if (NOT TARGET zstd)
+if (NOT TARGET zstd2)
     add_subdirectory(zstd zstd)
 endif()
 
@@ -64,7 +64,7 @@ include_directories(include)
 add_library(zdepth STATIC ${SOURCE_FILES})
 add_library(zdepth::zdepth ALIAS zdepth)
 
-target_link_libraries(zdepth PUBLIC zstd)
+target_link_libraries(zdepth PUBLIC zstd2)
 
 target_include_directories(zdepth PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
@@ -90,7 +90,7 @@ return()
 install(
     TARGETS
         zdepth
-        zstd
+        zstd2
     EXPORT
         zdepth-targets
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
