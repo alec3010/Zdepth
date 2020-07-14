@@ -103,6 +103,52 @@ uint16_t AzureKinectDequantizeDepth(uint16_t quantized)
     return 0; // Invalid value
 }
 
+/*
+uint16_t AzureKinectQuantizeDepth(uint16_t depth)
+{
+    if (depth <= 50) {
+        return 0; // Too close
+    }
+    if (depth < 187.5) {
+        return depth - 50;
+    }
+    if (depth < 375) {
+        return 137.5 + (depth - 187.5) / 2;
+    }
+    if (depth < 750) {
+        return 231.25 + (depth - 375) / 4;
+    }
+    if (depth < 1500) {
+        return 325 + (depth - 750) / 8;
+    }
+    if (depth < 3000) {
+        return 418,75 + (depth - 1500) / 16;
+    }
+    return 0; // Too far
+}
+uint16_t AzureKinectDequantizeDepth(uint16_t quantized)
+{
+    if (quantized == 0) {
+        return 0;
+    }
+    if (quantized < 137.5) {
+        return quantized + 50;
+    }
+    if (quantized < 231.25) {
+        return 137.5 + (quantized - 137.5) * 2;
+    }
+    if (quantized < 325) {
+        return 325 + (quantized - 231.25) * 4;
+    }
+    if (quantized < 418,75) {
+        return 750 + (quantized - 325) * 8;
+    }
+    if (quantized < 510) {
+        return 1500 + (quantized - 418.75) * 16;
+    }
+    return 0; // Invalid value
+}
+*/
 void QuantizeDepthImage(
     int width,
     int height,
